@@ -185,41 +185,31 @@
 
     /* ── Certifications ── */
     #certifications { padding: 5rem 0; }
-    .cert-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .cert-card:hover {
-      box-shadow: 0 0 30px rgba(0,161,224,0.3);
-      transform: translateY(-4px);
-    }
-    .cert-card img {
-      max-width: 100%; height: auto;
-      border-radius: 8px;
-    }
-    /* Fallback badges shown when image is unavailable */
-    .cert-badges-fallback {
+    .cert-badges-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.4rem;
     }
     .cert-badge-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 1.5rem 1rem;
       text-align: center;
       transition: box-shadow 0.3s, transform 0.3s;
+      display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
     }
     .cert-badge-item:hover {
-      box-shadow: 0 0 24px rgba(0,161,224,0.35);
-      transform: translateY(-4px);
+      box-shadow: 0 0 28px rgba(0,161,224,0.35);
+      transform: translateY(-5px);
     }
-    .cert-icon { font-size: 2.4rem; margin-bottom: 0.6rem; }
+    .cert-badge-item img {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: contain;
+    }
     .cert-badge-item h4 {
       font-family: 'Poppins', sans-serif;
       font-size: 0.88rem; font-weight: 600;
@@ -346,7 +336,7 @@
     <div class="container">
       <div class="hero-inner">
         <div class="profile-wrap">
-      <img id="profile-photo" src="assets/profile.jpg" alt="Divyanshu Kumar" onerror="this.style.background='linear-gradient(135deg,#032D60,#00A1E0)';this.removeAttribute('src');" />
+          <img id="profile-photo" src="assets/profile.jpg" alt="Divyanshu Kumar" onerror="this.style.background='linear-gradient(135deg,#032D60,#00A1E0)';this.removeAttribute('src');" />
         </div>
         <div class="hero-text fade-in">
           <div class="badge-title">☁️ Salesforce Developer</div>
@@ -358,7 +348,7 @@
           </p>
           <div class="hero-buttons">
             <a class="btn btn-primary" href="mailto:rajdivyanshu01@gmail.com">📧 Email Me</a>
-            <a class="btn btn-outline"href="https://www.linkedin.com/in/divyanshu-kumar06" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/divyanshu-kumar06" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
           </div>
         </div>
       </div>
@@ -369,26 +359,22 @@
   <section id="certifications">
     <div class="container">
       <h2 class="section-heading fade-in">☁️ Certifications</h2>
-      <div class="cert-card fade-in" id="cert-image-card">
-        <img src="assets/certifications.png" alt="Salesforce Certifications" id="cert-img" />
-      </div>
-      <!-- Fallback badges (shown if image fails to load) -->
-      <div class="cert-badges-fallback fade-in" id="cert-fallback" style="display:none;">
+      <div class="cert-badges-grid fade-in">
         <div class="cert-badge-item">
-          <div class="cert-icon">🏆</div>
+          <img src="assets/Platform-Admin.png" alt="Salesforce Certified Administrator" />
           <h4>Salesforce Certified Administrator</h4>
         </div>
         <div class="cert-badge-item">
-          <div class="cert-icon">⚡</div>
+          <img src="assets/Plat-Dev.png" alt="Salesforce Certified Platform Developer I" />
           <h4>Salesforce Certified Platform Developer I</h4>
         </div>
         <div class="cert-badge-item">
-          <div class="cert-icon">🤖</div>
+          <img src="assets/AI-Associate.png" alt="Salesforce Certified AI Associate" />
           <h4>Salesforce Certified AI Associate</h4>
         </div>
         <div class="cert-badge-item">
-          <div class="cert-icon">🧠</div>
-          <h4>Salesforce Certified AI Specialist</h4>
+          <img src="assets/Agentforce-Specialist.png" alt="Salesforce Agentforce Specialist" />
+          <h4>Salesforce Agentforce Specialist</h4>
         </div>
       </div>
     </div>
@@ -479,15 +465,6 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Certifications image fallback
-    const certImg = document.getElementById('cert-img');
-    if (certImg) {
-      certImg.addEventListener('error', () => {
-        document.getElementById('cert-image-card').style.display = 'none';
-        document.getElementById('cert-fallback').style.display = 'grid';
-      });
-    }
   </script>
 </body>
 </html>
