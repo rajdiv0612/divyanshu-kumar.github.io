@@ -50,12 +50,39 @@
     .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
     section { position: relative; z-index: 1; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+
+    /* ── Hero ── */
     #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 64px; }
     .hero-inner { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; padding: 5rem 0 4rem; }
-    .profile-wrap { flex-shrink: 0; position: relative; width: 200px; height: 200px; }
-    .profile-wrap::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(var(--sf-blue), var(--sf-accent), var(--sf-blue)); animation: spin 4s linear infinite; z-index: -1; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    #profile-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-end); display: block; }
+
+    /* Square profile box */
+    .profile-wrap {
+      flex-shrink: 0;
+      position: relative;
+      width: 200px; height: 200px;
+    }
+    .profile-wrap::before {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--sf-blue), var(--sf-accent), var(--sf-blue));
+      background-size: 300% 300%;
+      animation: gradShift 4s ease infinite;
+      z-index: -1;
+    }
+    @keyframes gradShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #profile-photo {
+      width: 200px; height: 200px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 3px solid var(--bg-end);
+      display: block;
+    }
+
     .hero-text { flex: 1; min-width: 260px; }
     .badge-title { display: inline-block; background: rgba(0,161,224,0.15); border: 1px solid var(--sf-blue); color: var(--sf-blue); font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
     .hero-text h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
@@ -68,18 +95,118 @@
     .btn-outline { background: transparent; color: var(--sf-blue); border: 1.5px solid var(--sf-blue) !important; }
     .btn-outline:hover { background: rgba(0,161,224,0.1); transform: translateY(-2px); }
     .btn-sm { padding: 0.4rem 1rem; font-size: 0.82rem; margin-top: 1rem; }
+
+    /* ── Dev Banner (above Certifications) ── */
+    #dev-banner {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0 3.5rem;
+      z-index: 1;
+    }
+    /* animated grid background */
+    #dev-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,161,224,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,161,224,0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridScroll 18s linear infinite;
+      z-index: 0;
+    }
+    @keyframes gridScroll { from { background-position: 0 0; } to { background-position: 48px 48px; } }
+    /* glowing orbs inside banner */
+    #dev-banner::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 20% 50%, rgba(0,161,224,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 50%, rgba(27,150,255,0.14) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .dev-banner-inner {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 1.8rem;
+      text-align: center;
+    }
+    .dev-banner-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--sf-blue);
+      border: 1px solid rgba(0,161,224,0.4);
+      padding: 0.3rem 1rem; border-radius: 999px;
+      background: rgba(0,161,224,0.08);
+    }
+    .dev-banner-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800; line-height: 1.2;
+      background: linear-gradient(135deg, #e8f4fd 0%, var(--sf-blue) 50%, var(--sf-accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dev-banner-subtitle {
+      color: var(--subtext); font-size: 1rem; max-width: 560px; line-height: 1.7;
+    }
+    /* scrolling tech pills */
+    .tech-ticker-wrap { width: 100%; overflow: hidden; }
+    .tech-ticker {
+      display: flex; gap: 1rem; width: max-content;
+      animation: tickerScroll 22s linear infinite;
+    }
+    .tech-ticker:hover { animation-play-state: paused; }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .tech-tag {
+      white-space: nowrap;
+      background: rgba(0,161,224,0.1);
+      border: 1px solid rgba(0,161,224,0.3);
+      color: var(--sf-blue);
+      padding: 0.4rem 1rem; border-radius: 999px;
+      font-size: 0.82rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    /* floating code snippets */
+    .code-chips { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .code-chip {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,161,224,0.2);
+      border-radius: 10px;
+      padding: 0.6rem 1.1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: #7ddcff;
+      line-height: 1.5;
+      animation: floatChip 4s ease-in-out infinite;
+    }
+    .code-chip:nth-child(2) { animation-delay: 0.6s; }
+    .code-chip:nth-child(3) { animation-delay: 1.2s; }
+    .code-chip:nth-child(4) { animation-delay: 1.8s; }
+    @keyframes floatChip { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    /* stat counters */
+    .dev-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; }
+    .dev-stat { text-align: center; }
+    .dev-stat .num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--sf-blue); }
+    .dev-stat .lbl { font-size: 0.78rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ── Section headings ── */
     .section-heading { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.6rem; }
     .section-heading::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, var(--sf-blue), transparent); margin-left: 1rem; }
+
+    /* ── Certifications ── */
     #certifications { padding: 5rem 0; }
     .cert-badges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
     .cert-badge-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.5rem 1rem; text-align: center; transition: box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
     .cert-badge-item:hover { box-shadow: 0 0 28px rgba(0,161,224,0.35); transform: translateY(-5px); }
     .cert-badge-item img { width: 100%; max-width: 180px; height: auto; border-radius: 10px; object-fit: contain; }
     .cert-badge-item h4 { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--sf-blue); line-height: 1.4; }
+
+    /* ── Skills ── */
     #skills { padding: 5rem 0; }
     .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .skill-pill { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); padding: 0.5rem 1.1rem; border-radius: 999px; font-size: 0.9rem; font-weight: 500; transition: background 0.2s, box-shadow 0.2s, transform 0.2s; cursor: default; }
     .skill-pill:hover { background: rgba(0,161,224,0.2); box-shadow: 0 0 12px rgba(0,161,224,0.3); transform: translateY(-2px); }
+
+    /* ── Experience ── */
     #experience { padding: 5rem 0; }
     .timeline { display: flex; flex-direction: column; gap: 1.6rem; }
     .timeline-item { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--sf-blue); border-radius: 12px; padding: 1.5rem 1.8rem; transition: box-shadow 0.3s, transform 0.3s; }
@@ -87,6 +214,8 @@
     .timeline-item h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.3rem; }
     .timeline-date { color: var(--sf-blue); font-size: 0.88rem; font-weight: 500; }
     .timeline-company { color: var(--subtext); font-size: 0.88rem; margin-top: 0.2rem; }
+
+    /* ── Projects ── */
     #projects { padding: 5rem 0; }
     .projects-filter-bar { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
     .filter-label { font-size: 0.88rem; color: var(--subtext); font-weight: 500; }
@@ -104,14 +233,22 @@
     .project-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .project-points li { font-size: 0.88rem; color: var(--subtext); line-height: 1.6; padding-left: 1.2rem; position: relative; }
     .project-points li::before { content: '▸'; position: absolute; left: 0; color: var(--sf-blue); font-size: 0.8rem; }
+
+    /* ── Contact ── */
     #contact { padding: 5rem 0 4rem; }
     .contact-grid { display: flex; gap: 1.2rem; flex-wrap: wrap; }
     .contact-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: var(--text); font-size: 0.95rem; font-weight: 500; transition: box-shadow 0.3s, transform 0.3s; }
     .contact-item:hover { box-shadow: 0 0 20px rgba(0,161,224,0.3); transform: translateY(-3px); }
     .contact-icon { font-size: 1.4rem; }
+
+    /* ── Footer ── */
     footer { position: relative; z-index: 1; text-align: center; padding: 1.5rem; border-top: 1px solid var(--footer-border); color: var(--subtext); font-size: 0.85rem; transition: color 0.4s ease; }
+
+    /* ── Scroll fade-in ── */
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero-inner { flex-direction: column; align-items: flex-start; }
       .profile-wrap { width: 150px; height: 150px; }
@@ -122,10 +259,14 @@
       .nav-links li a { display: block; padding: 0.8rem 5%; font-size: 1rem; }
       .theme-toggle { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
       .projects-grid { grid-template-columns: 1fr; }
+      .dev-stats { gap: 1.5rem; }
+      .code-chips { display: none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
   <nav>
     <a class="nav-brand" href="#hero">DK<span>.</span></a>
     <ul class="nav-links" id="nav-links">
@@ -143,6 +284,7 @@
     </div>
   </nav>
 
+  <!-- Hero -->
   <section id="hero">
     <div class="container">
       <div class="hero-inner">
@@ -163,6 +305,72 @@
     </div>
   </section>
 
+  <!-- ══ Creative Developer Banner ══ -->
+  <section id="dev-banner">
+    <div class="container">
+      <div class="dev-banner-inner fade-in">
+
+        <span class="dev-banner-label">⚡ Software Developer</span>
+
+        <h2 class="dev-banner-title">Turning Business Needs<br>into Smart Salesforce Solutions</h2>
+
+        <p class="dev-banner-subtitle">
+          Crafting scalable Apex logic, intuitive LWC interfaces, and powerful automation —
+          one deployment at a time.
+        </p>
+
+        <!-- Floating code chips -->
+        <div class="code-chips">
+          <div class="code-chip">trigger.new.forEach(<br>&nbsp;&nbsp;rec => process(rec)<br>);</div>
+          <div class="code-chip">@AuraEnabled<br>public static List&lt;SObject&gt;<br>getData() { ... }</div>
+          <div class="code-chip">Database.executeBatch(<br>&nbsp;&nbsp;new ImportBatch(), 200<br>);</div>
+          <div class="code-chip">connectedCallback() {<br>&nbsp;&nbsp;loadData();<br>}</div>
+        </div>
+
+        <!-- Dev stats -->
+        <div class="dev-stats">
+          <div class="dev-stat"><div class="num">1.9+</div><div class="lbl">Years Experience</div></div>
+          <div class="dev-stat"><div class="num">4</div><div class="lbl">SF Certifications</div></div>
+          <div class="dev-stat"><div class="num">3+</div><div class="lbl">Projects Delivered</div></div>
+          <div class="dev-stat"><div class="num">50K+</div><div class="lbl">Records Processed</div></div>
+        </div>
+
+        <!-- Scrolling tech ticker -->
+        <div class="tech-ticker-wrap">
+          <div class="tech-ticker">
+            <span class="tech-tag">⚡ Apex</span>
+            <span class="tech-tag">🧩 LWC</span>
+            <span class="tech-tag">☁️ Sales Cloud</span>
+            <span class="tech-tag">🛠 Service Cloud</span>
+            <span class="tech-tag">🔄 Flows</span>
+            <span class="tech-tag">📊 SOQL</span>
+            <span class="tech-tag">🔗 REST Integration</span>
+            <span class="tech-tag">📱 Mobile Apps</span>
+            <span class="tech-tag">🤖 Agentforce</span>
+            <span class="tech-tag">🧠 AI Associate</span>
+            <span class="tech-tag">🏗 Batch Apex</span>
+            <span class="tech-tag">🧪 Test Classes</span>
+            <!-- duplicate for seamless loop -->
+            <span class="tech-tag">⚡ Apex</span>
+            <span class="tech-tag">🧩 LWC</span>
+            <span class="tech-tag">☁️ Sales Cloud</span>
+            <span class="tech-tag">🛠 Service Cloud</span>
+            <span class="tech-tag">🔄 Flows</span>
+            <span class="tech-tag">📊 SOQL</span>
+            <span class="tech-tag">🔗 REST Integration</span>
+            <span class="tech-tag">📱 Mobile Apps</span>
+            <span class="tech-tag">🤖 Agentforce</span>
+            <span class="tech-tag">🧠 AI Associate</span>
+            <span class="tech-tag">🏗 Batch Apex</span>
+            <span class="tech-tag">🧪 Test Classes</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
   <section id="certifications">
     <div class="container">
       <h2 class="section-heading fade-in">☁️ Certifications</h2>
@@ -175,6 +383,7 @@
     </div>
   </section>
 
+  <!-- Skills -->
   <section id="skills">
     <div class="container">
       <h2 class="section-heading fade-in">🛠 Skills</h2>
@@ -184,6 +393,7 @@
     </div>
   </section>
 
+  <!-- Experience -->
   <section id="experience">
     <div class="container">
       <h2 class="section-heading fade-in">💼 Experience</h2>
@@ -204,6 +414,7 @@
     </div>
   </section>
 
+  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <h2 class="section-heading fade-in">🚀 Projects</h2>
@@ -271,6 +482,7 @@
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <h2 class="section-heading fade-in">📬 Contact</h2>
