@@ -161,11 +161,65 @@
     .cert-badge-item img { width: 100%; max-width: 180px; height: auto; border-radius: 10px; object-fit: contain; }
     .cert-badge-item h4 { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--sf-blue); line-height: 1.4; }
 
-    /* ── Skills ── */
+    /* ── Technology Section ── */
     #skills { padding: 5rem 0; }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .skill-pill { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); padding: 0.5rem 1.1rem; border-radius: 999px; font-size: 0.9rem; font-weight: 500; transition: background 0.2s, box-shadow 0.2s, transform 0.2s; cursor: default; }
-    .skill-pill:hover { background: rgba(0,161,224,0.2); box-shadow: 0 0 12px rgba(0,161,224,0.3); transform: translateY(-2px); }
+    .tech-section-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--sf-blue);
+      border: 1px solid rgba(0,161,224,0.4);
+      padding: 0.3rem 1rem; border-radius: 999px;
+      background: rgba(0,161,224,0.08);
+      display: inline-block; margin-bottom: 2rem;
+    }
+    .tech-categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+    .tech-category-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-top: 3px solid var(--sf-blue);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .tech-category-card:hover {
+      box-shadow: 0 0 28px rgba(0,161,224,0.3);
+      transform: translateY(-4px);
+    }
+    .tech-category-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--sf-blue);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tech-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .tech-pill {
+      background: rgba(0,161,224,0.08);
+      border: 1px solid rgba(0,161,224,0.25);
+      color: var(--text);
+      padding: 0.32rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .tech-pill:hover {
+      background: rgba(0,161,224,0.22);
+      box-shadow: 0 0 10px rgba(0,161,224,0.3);
+      transform: translateY(-2px);
+      color: var(--sf-blue);
+    }
 
     /* ── Experience ── */
     #experience { padding: 5rem 0; }
@@ -221,6 +275,7 @@
       .theme-toggle { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
       .projects-grid { grid-template-columns: 1fr; }
       .dev-stats { gap: 1.5rem; }
+      .tech-categories-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -231,7 +286,7 @@
     <a class="nav-brand" href="#Salesforce Developer">Divyanshu Kumar<span>.</span></a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#skills">Skills</a></li>
+      <li><a href="#skills">Technology</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects" id="nav-projects-link">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -334,12 +389,86 @@
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- Technology -->
   <section id="skills">
     <div class="container">
-      <h2 class="section-heading fade-in">🛠 Skills</h2>
-      <div class="skills-grid fade-in">
-        <span class="skill-pill">Apex</span><span class="skill-pill">LWC</span><span class="skill-pill">Triggers</span><span class="skill-pill">SOQL</span><span class="skill-pill">Sales Cloud</span><span class="skill-pill">Service Cloud</span><span class="skill-pill">Experience Cloud</span><span class="skill-pill">Flows</span><span class="skill-pill">Validation Rules</span><span class="skill-pill">Reports &amp; Dashboards</span><span class="skill-pill">Integration</span><span class="skill-pill">Mobile Apps</span>
+      <h2 class="section-heading fade-in">💻 Technology</h2>
+
+      <div class="tech-categories-grid fade-in">
+
+        <!-- Tech Stack -->
+        <div class="tech-category-card">
+          <div class="tech-category-title">⚡ Tech Stack</div>
+          <div class="tech-pills-wrap">
+            <span class="tech-pill">Apex</span>
+            <span class="tech-pill">LWC</span>
+            <span class="tech-pill">Aura</span>
+            <span class="tech-pill">Visualforce</span>
+            <span class="tech-pill">Flows</span>
+            <span class="tech-pill">Triggers</span>
+            <span class="tech-pill">SOQL / SOSL</span>
+            <span class="tech-pill">Platform Events</span>
+            <span class="tech-pill">Batch Apex</span>
+            <span class="tech-pill">Queueable</span>
+            <span class="tech-pill">Scheduled Jobs</span>
+            <span class="tech-pill">Custom Metadata</span>
+            <span class="tech-pill">Custom Settings</span>
+            <span class="tech-pill">Validation Rules</span>
+            <span class="tech-pill">Formula Fields</span>
+            <span class="tech-pill">Process Builder</span>
+            <span class="tech-pill">Workflow Rules</span>
+          </div>
+        </div>
+
+        <!-- Salesforce Clouds & Products -->
+        <div class="tech-category-card">
+          <div class="tech-category-title">☁️ Salesforce Clouds &amp; Products</div>
+          <div class="tech-pills-wrap">
+            <span class="tech-pill">Sales Cloud</span>
+            <span class="tech-pill">Service Cloud</span>
+            <span class="tech-pill">Experience Cloud</span>
+            <span class="tech-pill">Marketing Cloud</span>
+            <span class="tech-pill">CPQ</span>
+            <span class="tech-pill">Billing</span>
+            <span class="tech-pill">NPSP</span>
+            <span class="tech-pill">FSC</span>
+            <span class="tech-pill">Health Cloud</span>
+            <span class="tech-pill">Commerce B2C</span>
+            <span class="tech-pill">Pardot</span>
+            <span class="tech-pill">Einstein</span>
+            <span class="tech-pill">Field Service</span>
+            <span class="tech-pill">Data Cloud</span>
+            <span class="tech-pill">Agentforce</span>
+            <span class="tech-pill">OmniStudio</span>
+            <span class="tech-pill">Tableau CRM</span>
+          </div>
+        </div>
+
+        <!-- Integrations & APIs -->
+        <div class="tech-category-card">
+          <div class="tech-category-title">🔗 Integrations &amp; APIs</div>
+          <div class="tech-pills-wrap">
+            <span class="tech-pill">REST APIs</span>
+            <span class="tech-pill">SOAP APIs</span>
+            <span class="tech-pill">MuleSoft</span>
+            <span class="tech-pill">Stripe</span>
+            <span class="tech-pill">PandaDoc</span>
+            <span class="tech-pill">Conga</span>
+            <span class="tech-pill">DocuSign</span>
+            <span class="tech-pill">Twilio</span>
+            <span class="tech-pill">Zapier</span>
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Mailchimp</span>
+            <span class="tech-pill">Zendesk</span>
+            <span class="tech-pill">QuickBooks</span>
+            <span class="tech-pill">Shopify</span>
+            <span class="tech-pill">HubSpot</span>
+            <span class="tech-pill">Slack</span>
+            <span class="tech-pill">Microsoft 365</span>
+            <span class="tech-pill">Google Workspace</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -383,7 +512,7 @@
             <span class="project-title">Project #1</span>
             <span class="project-date">Apr 2024 – Aug 2024</span>
           </div>
-          <span class="project-domain">Recruitment / Accounting</span>
+          <span class="tech-pill" style="display:inline-block;margin-bottom:1rem;">Recruitment / Accounting</span>
           <span class="project-company-tag">Makedian Softech</span>
           <ul class="project-points">
             <li>Designed and developed custom objects, fields, page layouts, and record pages to meet client specifications (Sales Cloud)</li>
