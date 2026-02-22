@@ -96,34 +96,12 @@
     .btn-outline:hover { background: rgba(0,161,224,0.1); transform: translateY(-2px); }
     .btn-sm { padding: 0.4rem 1rem; font-size: 0.82rem; margin-top: 1rem; }
 
-    /* ── Dev Banner (above Certifications) ── */
+    /* ── Dev Banner ── */
     #dev-banner {
       position: relative;
       overflow: hidden;
       padding: 4rem 0 3.5rem;
       z-index: 1;
-    }
-    /* animated grid background */
-    #dev-banner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,161,224,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,161,224,0.08) 1px, transparent 1px);
-      background-size: 48px 48px;
-      animation: gridScroll 18s linear infinite;
-      z-index: 0;
-    }
-    @keyframes gridScroll { from { background-position: 0 0; } to { background-position: 48px 48px; } }
-    /* glowing orbs inside banner */
-    #dev-banner::after {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 70% at 20% 50%, rgba(0,161,224,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 80% 50%, rgba(27,150,255,0.14) 0%, transparent 70%);
-      z-index: 0;
-      pointer-events: none;
     }
     .dev-banner-inner {
       position: relative; z-index: 1;
@@ -148,6 +126,11 @@
     .dev-banner-subtitle {
       color: var(--subtext); font-size: 1rem; max-width: 560px; line-height: 1.7;
     }
+    /* stat counters */
+    .dev-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; }
+    .dev-stat { text-align: center; }
+    .dev-stat .num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--sf-blue); }
+    .dev-stat .lbl { font-size: 0.78rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.1em; }
     /* scrolling tech pills */
     .tech-ticker-wrap { width: 100%; overflow: hidden; }
     .tech-ticker {
@@ -237,6 +220,7 @@
       .nav-links li a { display: block; padding: 0.8rem 5%; font-size: 1rem; }
       .theme-toggle { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
       .projects-grid { grid-template-columns: 1fr; }
+      .dev-stats { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -294,6 +278,13 @@
           Crafting scalable Apex logic, intuitive LWC interfaces, and powerful automation —
           one deployment at a time.
         </p>
+
+        <!-- Dev stats -->
+        <div class="dev-stats">
+          <div class="dev-stat"><div class="num">1.9+</div><div class="lbl">Years Experience</div></div>
+          <div class="dev-stat"><div class="num">4</div><div class="lbl">SF Certifications</div></div>
+          <div class="dev-stat"><div class="num">3+</div><div class="lbl">Projects Delivered</div></div>
+        </div>
 
         <!-- Scrolling tech ticker -->
         <div class="tech-ticker-wrap">
