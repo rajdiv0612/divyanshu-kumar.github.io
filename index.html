@@ -550,6 +550,9 @@
           <h3>Salesforce Developer</h3>
           <div class="timeline-company">Codleo Consulting</div>
           <div class="timeline-date">Jan 2025 – Present</div>
+          <button class="btn btn-outline btn-sm" onclick="filterAndScrollToProjects('codleo')">
+            🗂 View Codleo Projects
+          </button>
         </div>
         <div class="timeline-item fade-in">
           <h3>Junior Associate Developer</h3>
@@ -570,9 +573,29 @@
       <div class="projects-filter-bar fade-in">
         <span class="filter-label">Filter by:</span>
         <button class="filter-btn active" id="filter-all" onclick="filterProjects('all')">All Projects</button>
+        <button class="filter-btn" id="filter-codleo" onclick="filterProjects('codleo')">Codleo Consulting</button>
         <button class="filter-btn" id="filter-makedian" onclick="filterProjects('makedian')">Makedian Softech</button>
       </div>
       <div class="projects-grid">
+
+        <!-- Codleo Project 3 -->
+        <div class="project-card fade-in" data-company="codleo">
+          <div class="project-header">
+            <span class="project-title">Project #3</span>
+            <span class="project-date">Feb 2025 – Mar 2025</span>
+          </div>
+          <span class="project-domain">Sales (Sales Cloud)</span>
+          <span class="project-company-tag">Codleo Consulting</span>
+          <ul class="project-points">
+            <li>Designed and developed a custom Lightning Web Component (LWC) for Excel file upload functionality supporting bulk data import into Salesforce</li>
+            <li>Implemented multi-object data import capability for Account and Opportunity objects with dynamic field mapping</li>
+            <li>Built sophisticated duplicate detection logic: Account duplicate checking based on Name, Email, and Phone combinations; Opportunity comprehensive duplicate validation across all fields</li>
+            <li>Engineered scalable data processing solution using Batch Apex and Queueable Apex to handle 50,000+ records efficiently</li>
+            <li>Developed custom error handling mechanism with API Log integration to capture, store, and track import errors for debugging and auditing</li>
+            <li>Implemented asynchronous processing to ensure optimal user experience and system performance during large data operations</li>
+            <li>Created user-friendly interface with real-time upload status, success notifications, and error reporting</li>
+          </ul>
+        </div>
 
         <!-- Makedian Project 1 -->
         <div class="project-card fade-in" data-company="makedian">
@@ -665,14 +688,21 @@
     function filterProjects(company) {
       const cards = document.querySelectorAll('.project-card');
       const btnAll = document.getElementById('filter-all');
+      const btnCodleo = document.getElementById('filter-codleo');
       const btnMakedian = document.getElementById('filter-makedian');
 
       btnAll.classList.remove('active');
+      btnCodleo.classList.remove('active');
       btnMakedian.classList.remove('active');
 
       if (company === 'all') {
         btnAll.classList.add('active');
         cards.forEach(c => c.classList.remove('hidden'));
+      } else if (company === 'codleo') {
+        btnCodleo.classList.add('active');
+        cards.forEach(c => {
+          c.classList.toggle('hidden', c.dataset.company !== 'codleo');
+        });
       } else {
         btnMakedian.classList.add('active');
         cards.forEach(c => {
