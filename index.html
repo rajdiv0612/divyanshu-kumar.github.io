@@ -645,7 +645,7 @@
     }
     themeBtn.addEventListener('click', () => {
       const isLight = body.classList.toggle('light-mode');
-      themeBtn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+      themeBtn.textContent = isLight ? '🌙' : '☀️';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
