@@ -165,28 +165,6 @@
       font-size: 0.82rem; font-weight: 600;
       transition: background 0.2s;
     }
-    /* floating code snippets */
-    .code-chips { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .code-chip {
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(0,161,224,0.2);
-      border-radius: 10px;
-      padding: 0.6rem 1.1rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.8rem;
-      color: #7ddcff;
-      line-height: 1.5;
-      animation: floatChip 4s ease-in-out infinite;
-    }
-    .code-chip:nth-child(2) { animation-delay: 0.6s; }
-    .code-chip:nth-child(3) { animation-delay: 1.2s; }
-    .code-chip:nth-child(4) { animation-delay: 1.8s; }
-    @keyframes floatChip { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    /* stat counters */
-    .dev-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center; }
-    .dev-stat { text-align: center; }
-    .dev-stat .num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--sf-blue); }
-    .dev-stat .lbl { font-size: 0.78rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.1em; }
 
     /* ── Section headings ── */
     .section-heading { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.6rem; }
@@ -259,8 +237,6 @@
       .nav-links li a { display: block; padding: 0.8rem 5%; font-size: 1rem; }
       .theme-toggle { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
       .projects-grid { grid-template-columns: 1fr; }
-      .dev-stats { gap: 1.5rem; }
-      .code-chips { display: none; }
     }
   </style>
 </head>
@@ -318,22 +294,6 @@
           Crafting scalable Apex logic, intuitive LWC interfaces, and powerful automation —
           one deployment at a time.
         </p>
-
-        <!-- Floating code chips -->
-        <div class="code-chips">
-          <div class="code-chip">trigger.new.forEach(<br>&nbsp;&nbsp;rec => process(rec)<br>);</div>
-          <div class="code-chip">@AuraEnabled<br>public static List&lt;SObject&gt;<br>getData() { ... }</div>
-          <div class="code-chip">Database.executeBatch(<br>&nbsp;&nbsp;new ImportBatch(), 200<br>);</div>
-          <div class="code-chip">connectedCallback() {<br>&nbsp;&nbsp;loadData();<br>}</div>
-        </div>
-
-        <!-- Dev stats -->
-        <div class="dev-stats">
-          <div class="dev-stat"><div class="num">1.9+</div><div class="lbl">Years Experience</div></div>
-          <div class="dev-stat"><div class="num">4</div><div class="lbl">SF Certifications</div></div>
-          <div class="dev-stat"><div class="num">3+</div><div class="lbl">Projects Delivered</div></div>
-          <div class="dev-stat"><div class="num">50K+</div><div class="lbl">Records Processed</div></div>
-        </div>
 
         <!-- Scrolling tech ticker -->
         <div class="tech-ticker-wrap">
