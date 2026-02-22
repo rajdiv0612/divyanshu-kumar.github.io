@@ -23,7 +23,7 @@
       --footer-border: rgba(0,161,224,0.15);
     }
 
-    /* ── Light Mode ── */
+    /* Light Mode */
     body.light-mode {
       --bg-start:   #f0f7ff;
       --bg-end:     #dceeff;
@@ -47,9 +47,8 @@
       transition: background 0.4s ease, color 0.4s ease;
     }
 
-    /* ── Animated background orbs ── */
     body::before, body::after {
-      content: '';
+      content: ''; 
       position: fixed;
       border-radius: 50%;
       filter: blur(120px);
@@ -74,7 +73,7 @@
       to   { transform: translate(60px, 60px); }
     }
 
-    /* ── Navbar ── */
+    /* Navbar */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -99,9 +98,8 @@
       font-size: 0.92rem; font-weight: 500;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--sf-blue); }
+    .nav-links a:hover, .nav-links a.active { color: var(--sf-blue); }
 
-    /* ── Theme Toggle Button ── */
     .theme-toggle {
       background: var(--card-bg);
       border: 1.5px solid var(--card-border);
@@ -135,18 +133,18 @@
       transition: transform 0.3s, opacity 0.3s;
     }
 
-    /* ── Section wrapper ── */
     section { position: relative; z-index: 1; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
 
-    /* ── Hero ── */
+    /* Hero */
     #hero {
       min-height: 100vh;
       display: flex; align-items: center;
       padding-top: 64px;
     }
     .hero-inner {
-      display: flex; align-items: center; gap: 3rem;
+      display: flex; align-items: center;
+      gap: 3rem;
       flex-wrap: wrap; padding: 5rem 0 4rem;
     }
     .profile-wrap {
@@ -200,7 +198,7 @@
       padding: 0.65rem 1.4rem;
       border-radius: 8px; font-size: 0.92rem; font-weight: 600;
       text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
+      cursor: pointer; border: none;
     }
     .btn-primary {
       background: var(--sf-blue); color: #fff;
@@ -209,11 +207,15 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,161,224,0.55); }
     .btn-outline {
       background: transparent; color: var(--sf-blue);
-      border: 1.5px solid var(--sf-blue);
+      border: 1.5px solid var(--sf-blue) !important;
     }
     .btn-outline:hover { background: rgba(0,161,224,0.1); transform: translateY(-2px); }
+    .btn-sm {
+      padding: 0.4rem 1rem; font-size: 0.82rem;
+      margin-top: 1rem;
+    }
 
-    /* ── Section headings ── */
+    /* Section headings */
     .section-heading {
       font-family: 'Poppins', sans-serif;
       font-size: clamp(1.6rem, 3.5vw, 2.2rem);
@@ -226,7 +228,7 @@
       margin-left: 1rem;
     }
 
-    /* ── Certifications ── */
+    /* Certifications */
     #certifications { padding: 5rem 0; }
     .cert-badges-grid {
       display: grid;
@@ -247,11 +249,8 @@
       transform: translateY(-5px);
     }
     .cert-badge-item img {
-      width: 100%;
-      max-width: 180px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: contain;
+      width: 100%; max-width: 180px;
+      height: auto; border-radius: 10px; object-fit: contain;
     }
     .cert-badge-item h4 {
       font-family: 'Poppins', sans-serif;
@@ -259,11 +258,9 @@
       color: var(--sf-blue); line-height: 1.4;
     }
 
-    /* ── Skills ── */
+    /* Skills */
     #skills { padding: 5rem 0; }
-    .skills-grid {
-      display: flex; flex-wrap: wrap; gap: 0.75rem;
-    }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
     .skill-pill {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -280,7 +277,7 @@
       transform: translateY(-2px);
     }
 
-    /* ── Experience ── */
+    /* Experience */
     #experience { padding: 5rem 0; }
     .timeline { display: flex; flex-direction: column; gap: 1.6rem; }
     .timeline-item {
@@ -299,18 +296,111 @@
       font-family: 'Poppins', sans-serif;
       font-size: 1.05rem; font-weight: 600; margin-bottom: 0.3rem;
     }
-    .timeline-date {
-      color: var(--sf-blue); font-size: 0.88rem; font-weight: 500;
+    .timeline-date { color: var(--sf-blue); font-size: 0.88rem; font-weight: 500; }
+    .timeline-company { color: var(--subtext); font-size: 0.88rem; margin-top: 0.2rem; }
+
+    /* Projects Section */
+    #projects { padding: 5rem 0; }
+    .projects-filter-bar {
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
     }
-    .timeline-company {
-      color: var(--subtext); font-size: 0.88rem; margin-top: 0.2rem;
+    .filter-label {
+      font-size: 0.88rem; color: var(--subtext); font-weight: 500;
+    }
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      color: var(--subtext);
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      font-size: 0.82rem; font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(0,161,224,0.18);
+      color: var(--sf-blue);
+      border-color: var(--sf-blue);
+      box-shadow: 0 0 10px rgba(0,161,224,0.25);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.6rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--sf-blue);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      transition: box-shadow 0.3s, transform 0.3s, opacity 0.4s;
+    }
+    .project-card:hover {
+      box-shadow: 0 0 28px rgba(0,161,224,0.3);
+      transform: translateY(-4px);
+    }
+    .project-card.hidden {
+      display: none;
+    }
+    .project-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; margin-bottom: 0.6rem; flex-wrap: wrap;
+    }
+    .project-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--text);
+    }
+    .project-date {
+      font-size: 0.8rem; color: var(--sf-blue);
+      font-weight: 600; white-space: nowrap;
+    }
+    .project-domain {
+      display: inline-block;
+      background: rgba(0,161,224,0.12);
+      border: 1px solid var(--sf-blue);
+      color: var(--sf-blue);
+      font-size: 0.76rem; font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+    .project-company-tag {
+      display: inline-block;
+      background: rgba(27,150,255,0.1);
+      border: 1px solid rgba(27,150,255,0.4);
+      color: var(--sf-accent);
+      font-size: 0.74rem; font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      margin-left: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+    .project-points {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .project-points li {
+      font-size: 0.88rem;
+      color: var(--subtext);
+      line-height: 1.6;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .project-points li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: var(--sf-blue);
+      font-size: 0.8rem;
     }
 
-    /* ── Contact ── */
+    /* Contact */
     #contact { padding: 5rem 0 4rem; }
-    .contact-grid {
-      display: flex; gap: 1.2rem; flex-wrap: wrap;
-    }
+    .contact-grid { display: flex; gap: 1.2rem; flex-wrap: wrap; }
     .contact-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -327,21 +417,20 @@
     }
     .contact-icon { font-size: 1.4rem; }
 
-    /* ── Footer ── */
+    /* Footer */
     footer {
       position: relative; z-index: 1;
-      text-align: center;
-      padding: 1.5rem;
+      text-align: center; padding: 1.5rem;
       border-top: 1px solid var(--footer-border);
       color: var(--subtext); font-size: 0.85rem;
       transition: color 0.4s ease;
     }
 
-    /* ── Scroll fade-in ── */
+    /* Scroll fade-in */
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── Responsive ── */
+    /* Responsive */
     @media (max-width: 640px) {
       .hero-inner { flex-direction: column; align-items: flex-start; }
       .profile-wrap { width: 150px; height: 150px; }
@@ -357,6 +446,7 @@
       .nav-links.open { display: flex; }
       .nav-links li a { display: block; padding: 0.8rem 5%; font-size: 1rem; }
       .theme-toggle { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -369,12 +459,11 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects" id="nav-projects-link">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:0.8rem;">
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
-        🌙 Dark
-      </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">🌙 Dark</button>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -386,7 +475,8 @@
     <div class="container">
       <div class="hero-inner">
         <div class="profile-wrap">
-          <img id="profile-photo" src="assets/profile.jpg" alt="Divyanshu Kumar" onerror="this.style.background='linear-gradient(135deg,#032D60,#00A1E0)';this.removeAttribute('src');" />
+          <img id="profile-photo" src="assets/profile.jpg" alt="Divyanshu Kumar"
+               onerror="this.style.background='linear-gradient(135deg,#032D60,#00A1E0)';this.removeAttribute('src');" />
         </div>
         <div class="hero-text fade-in">
           <div class="badge-title">☁️ Salesforce Developer</div>
@@ -465,7 +555,58 @@
           <h3>Junior Associate Developer</h3>
           <div class="timeline-company">Makedian Softech</div>
           <div class="timeline-date">Apr 2024 – Dec 2024</div>
+          <button class="btn btn-outline btn-sm" onclick="filterAndScrollToProjects('makedian')">
+            🗂 View Makedian Projects
+          </button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-heading fade-in">🚀 Projects</h2>
+      <div class="projects-filter-bar fade-in">
+        <span class="filter-label">Filter by:</span>
+        <button class="filter-btn active" id="filter-all" onclick="filterProjects('all')">All Projects</button>
+        <button class="filter-btn" id="filter-makedian" onclick="filterProjects('makedian')">Makedian Softech</button>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Makedian Project 1 -->
+        <div class="project-card fade-in" data-company="makedian">
+          <div class="project-header">
+            <span class="project-title">Project #1</span>
+            <span class="project-date">Apr 2024 – Aug 2024</span>
+          </div>
+          <span class="project-domain">Recruitment / Accounting</span>
+          <span class="project-company-tag">Makedian Softech</span>
+          <ul class="project-points">
+            <li>Designed and developed custom objects, fields, page layouts, and record pages to meet client specifications (Sales Cloud)</li>
+            <li>Implemented validation rules and designed automation solutions using Flow Builder and approval processes to optimize workflow</li>
+            <li>Created custom Lightning Web Components (LWC) to simplify candidate submission and application management for job applications</li>
+            <li>Automated email processing and event directing through auto-launched flows for improved efficiency</li>
+            <li>Developed Apex Triggers for document management and lead conversion, ensuring seamless data processing</li>
+          </ul>
+        </div>
+
+        <!-- Makedian Project 2 -->
+        <div class="project-card fade-in" data-company="makedian">
+          <div class="project-header">
+            <span class="project-title">Project #2</span>
+            <span class="project-date">Sep 2024 – Dec 2024</span>
+          </div>
+          <span class="project-domain">Hospitality</span>
+          <span class="project-company-tag">Makedian Softech</span>
+          <ul class="project-points">
+            <li>Configured standard and custom objects, fields, page layouts, and validation rules to align with client needs (Sales / Service Cloud)</li>
+            <li>Integrated email services with Outlook to manage email threads seamlessly within Salesforce</li>
+            <li>Developed custom Lightning Web Components (LWC) based on client specifications</li>
+            <li>Created Apex classes, triggers, and test classes to meet functional requirements and enhance system functionality</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
@@ -492,11 +633,9 @@
   </footer>
 
   <script>
-    // ── Theme Toggle ──
+    // Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');
     const body = document.body;
-
-    // Load saved preference; default is dark mode
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
       body.classList.add('light-mode');
@@ -504,40 +643,55 @@
     } else {
       themeBtn.textContent = '☀️ Light';
     }
-
     themeBtn.addEventListener('click', () => {
       const isLight = body.classList.toggle('light-mode');
-      if (isLight) {
-        themeBtn.textContent = '🌙 Dark';
-        localStorage.setItem('theme', 'light');
-      } else {
-        themeBtn.textContent = '☀️ Light';
-        localStorage.setItem('theme', 'dark');
-      }
+      themeBtn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // ── Hamburger menu toggle ──
+    // Hamburger menu
     const navToggle = document.getElementById('nav-toggle');
     const navLinks  = document.getElementById('nav-links');
     navToggle.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', open);
     });
-    // Close menu on link click
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       navLinks.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
     }));
 
-    // ── Intersection Observer for scroll fade-in ──
+    // Project Filtering
+    function filterProjects(company) {
+      const cards = document.querySelectorAll('.project-card');
+      const btnAll = document.getElementById('filter-all');
+      const btnMakedian = document.getElementById('filter-makedian');
+
+      btnAll.classList.remove('active');
+      btnMakedian.classList.remove('active');
+
+      if (company === 'all') {
+        btnAll.classList.add('active');
+        cards.forEach(c => c.classList.remove('hidden'));
+      } else {
+        btnMakedian.classList.add('active');
+        cards.forEach(c => {
+          c.classList.toggle('hidden', c.dataset.company !== company);
+        });
+      }
+    }
+
+    function filterAndScrollToProjects(company) {
+      filterProjects(company);
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Intersection Observer for scroll fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.15 });
-
+    }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
