@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --sf-blue:    #00A1E0;
       --sf-navy:    #032D60;
@@ -22,8 +21,6 @@
       --nav-mobile-bg: rgba(3,45,96,0.97);
       --footer-border: rgba(0,161,224,0.15);
     }
-
-    /* Light Mode */
     body.light-mode {
       --bg-start:   #f0f7ff;
       --bg-end:     #dceeff;
@@ -35,414 +32,92 @@
       --nav-mobile-bg: rgba(240,247,255,0.98);
       --footer-border: rgba(0,161,224,0.2);
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-      min-height: 100vh;
-      color: var(--text);
-      overflow-x: hidden;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    body::before, body::after {
-      content: ''; 
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: 0;
-    }
-    body::before {
-      width: 600px; height: 600px;
-      background: var(--sf-blue);
-      top: -200px; left: -200px;
-      animation: drift 14s ease-in-out infinite alternate;
-    }
-    body::after {
-      width: 500px; height: 500px;
-      background: var(--sf-accent);
-      bottom: -150px; right: -150px;
-      animation: drift 18s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes drift {
-      from { transform: translate(0, 0); }
-      to   { transform: translate(60px, 60px); }
-    }
-
-    /* Navbar */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      height: 64px;
-      background: var(--nav-bg);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,161,224,0.2);
-      transition: background 0.4s ease;
-    }
-    .nav-brand {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700; font-size: 1.2rem;
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.4s ease;
-    }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%); min-height: 100vh; color: var(--text); overflow-x: hidden; transition: background 0.4s ease, color 0.4s ease; }
+    body::before, body::after { content: ''; position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; z-index: 0; }
+    body::before { width: 600px; height: 600px; background: var(--sf-blue); top: -200px; left: -200px; animation: drift 14s ease-in-out infinite alternate; }
+    body::after { width: 500px; height: 500px; background: var(--sf-accent); bottom: -150px; right: -150px; animation: drift 18s ease-in-out infinite alternate-reverse; }
+    @keyframes drift { from { transform: translate(0, 0); } to { transform: translate(60px, 60px); } }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 64px; background: var(--nav-bg); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,161,224,0.2); transition: background 0.4s ease; }
+    .nav-brand { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--text); text-decoration: none; transition: color 0.4s ease; }
     .nav-brand span { color: var(--sf-blue); }
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a {
-      color: var(--subtext); text-decoration: none;
-      font-size: 0.92rem; font-weight: 500;
-      transition: color 0.2s;
-    }
+    .nav-links a { color: var(--subtext); text-decoration: none; font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--sf-blue); }
-
-    .theme-toggle {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s, color 0.4s;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .theme-toggle:hover {
-      background: rgba(0,161,224,0.15);
-      box-shadow: 0 0 12px rgba(0,161,224,0.3);
-      transform: translateY(-1px);
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
-    .nav-toggle span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text); border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
+    .theme-toggle { background: var(--card-bg); border: 1.5px solid var(--card-border); color: var(--text); border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: background 0.3s, box-shadow 0.3s, transform 0.2s, color 0.4s; white-space: nowrap; flex-shrink: 0; }
+    .theme-toggle:hover { background: rgba(0,161,224,0.15); box-shadow: 0 0 12px rgba(0,161,224,0.3); transform: translateY(-1px); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
     section { position: relative; z-index: 1; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
-
-    /* Hero */
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding-top: 64px;
-    }
-    .hero-inner {
-      display: flex; align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap; padding: 5rem 0 4rem;
-    }
-    .profile-wrap {
-      flex-shrink: 0;
-      position: relative;
-      width: 200px; height: 200px;
-    }
-    .profile-wrap::before {
-      content: '';
-      position: absolute; inset: -6px;
-      border-radius: 50%;
-      background: conic-gradient(var(--sf-blue), var(--sf-accent), var(--sf-blue));
-      animation: spin 4s linear infinite;
-      z-index: -1;
-    }
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 64px; }
+    .hero-inner { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; padding: 5rem 0 4rem; }
+    .profile-wrap { flex-shrink: 0; position: relative; width: 200px; height: 200px; }
+    .profile-wrap::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(var(--sf-blue), var(--sf-accent), var(--sf-blue)); animation: spin 4s linear infinite; z-index: -1; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    #profile-photo {
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--bg-end);
-      display: block;
-    }
+    #profile-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-end); display: block; }
     .hero-text { flex: 1; min-width: 260px; }
-    .badge-title {
-      display: inline-block;
-      background: rgba(0,161,224,0.15);
-      border: 1px solid var(--sf-blue);
-      color: var(--sf-blue);
-      font-size: 0.82rem; font-weight: 600;
-      padding: 0.3rem 0.9rem;
-      border-radius: 999px;
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .hero-text h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800; line-height: 1.15;
-      margin-bottom: 1rem;
-    }
+    .badge-title { display: inline-block; background: rgba(0,161,224,0.15); border: 1px solid var(--sf-blue); color: var(--sf-blue); font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .hero-text h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
     .hero-text h1 span { color: var(--sf-blue); }
-    .hero-bio {
-      color: var(--subtext); font-size: 1rem; line-height: 1.7;
-      max-width: 540px; margin-bottom: 1.8rem;
-    }
+    .hero-bio { color: var(--subtext); font-size: 1rem; line-height: 1.7; max-width: 540px; margin-bottom: 1.8rem; }
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.65rem 1.4rem;
-      border-radius: 8px; font-size: 0.92rem; font-weight: 600;
-      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer; border: none;
-    }
-    .btn-primary {
-      background: var(--sf-blue); color: #fff;
-      box-shadow: 0 4px 18px rgba(0,161,224,0.4);
-    }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem; border-radius: 8px; font-size: 0.92rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--sf-blue); color: #fff; box-shadow: 0 4px 18px rgba(0,161,224,0.4); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,161,224,0.55); }
-    .btn-outline {
-      background: transparent; color: var(--sf-blue);
-      border: 1.5px solid var(--sf-blue) !important;
-    }
+    .btn-outline { background: transparent; color: var(--sf-blue); border: 1.5px solid var(--sf-blue) !important; }
     .btn-outline:hover { background: rgba(0,161,224,0.1); transform: translateY(-2px); }
-    .btn-sm {
-      padding: 0.4rem 1rem; font-size: 0.82rem;
-      margin-top: 1rem;
-    }
-
-    /* Section headings */
-    .section-heading {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700; margin-bottom: 2.5rem;
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .section-heading::after {
-      content: ''; flex: 1; height: 2px;
-      background: linear-gradient(to right, var(--sf-blue), transparent);
-      margin-left: 1rem;
-    }
-
-    /* Certifications */
+    .btn-sm { padding: 0.4rem 1rem; font-size: 0.82rem; margin-top: 1rem; }
+    .section-heading { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .section-heading::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, var(--sf-blue), transparent); margin-left: 1rem; }
     #certifications { padding: 5rem 0; }
-    .cert-badges-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.4rem;
-    }
-    .cert-badge-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      transition: box-shadow 0.3s, transform 0.3s;
-      display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
-    }
-    .cert-badge-item:hover {
-      box-shadow: 0 0 28px rgba(0,161,224,0.35);
-      transform: translateY(-5px);
-    }
-    .cert-badge-item img {
-      width: 100%; max-width: 180px;
-      height: auto; border-radius: 10px; object-fit: contain;
-    }
-    .cert-badge-item h4 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.88rem; font-weight: 600;
-      color: var(--sf-blue); line-height: 1.4;
-    }
-
-    /* Skills */
+    .cert-badges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
+    .cert-badge-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.5rem 1rem; text-align: center; transition: box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+    .cert-badge-item:hover { box-shadow: 0 0 28px rgba(0,161,224,0.35); transform: translateY(-5px); }
+    .cert-badge-item img { width: 100%; max-width: 180px; height: auto; border-radius: 10px; object-fit: contain; }
+    .cert-badge-item h4 { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--sf-blue); line-height: 1.4; }
     #skills { padding: 5rem 0; }
     .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .skill-pill {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      padding: 0.5rem 1.1rem;
-      border-radius: 999px;
-      font-size: 0.9rem; font-weight: 500;
-      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-      cursor: default;
-    }
-    .skill-pill:hover {
-      background: rgba(0,161,224,0.2);
-      box-shadow: 0 0 12px rgba(0,161,224,0.3);
-      transform: translateY(-2px);
-    }
-
-    /* Experience */
+    .skill-pill { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); padding: 0.5rem 1.1rem; border-radius: 999px; font-size: 0.9rem; font-weight: 500; transition: background 0.2s, box-shadow 0.2s, transform 0.2s; cursor: default; }
+    .skill-pill:hover { background: rgba(0,161,224,0.2); box-shadow: 0 0 12px rgba(0,161,224,0.3); transform: translateY(-2px); }
     #experience { padding: 5rem 0; }
     .timeline { display: flex; flex-direction: column; gap: 1.6rem; }
-    .timeline-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-left: 4px solid var(--sf-blue);
-      border-radius: 12px;
-      padding: 1.5rem 1.8rem;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .timeline-item:hover {
-      box-shadow: 0 0 28px rgba(0,161,224,0.25);
-      transform: translateX(4px);
-    }
-    .timeline-item h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.05rem; font-weight: 600; margin-bottom: 0.3rem;
-    }
+    .timeline-item { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--sf-blue); border-radius: 12px; padding: 1.5rem 1.8rem; transition: box-shadow 0.3s, transform 0.3s; }
+    .timeline-item:hover { box-shadow: 0 0 28px rgba(0,161,224,0.25); transform: translateX(4px); }
+    .timeline-item h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 0.3rem; }
     .timeline-date { color: var(--sf-blue); font-size: 0.88rem; font-weight: 500; }
     .timeline-company { color: var(--subtext); font-size: 0.88rem; margin-top: 0.2rem; }
-
-    /* Projects Section */
     #projects { padding: 5rem 0; }
-    .projects-filter-bar {
-      display: flex; align-items: center; gap: 0.8rem;
-      margin-bottom: 2rem; flex-wrap: wrap;
-    }
-    .filter-label {
-      font-size: 0.88rem; color: var(--subtext); font-weight: 500;
-    }
-    .filter-btn {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      color: var(--subtext);
-      border-radius: 999px;
-      padding: 0.3rem 1rem;
-      font-size: 0.82rem; font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: rgba(0,161,224,0.18);
-      color: var(--sf-blue);
-      border-color: var(--sf-blue);
-      box-shadow: 0 0 10px rgba(0,161,224,0.25);
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.6rem;
-    }
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-left: 4px solid var(--sf-blue);
-      border-radius: 14px;
-      padding: 1.6rem 1.8rem;
-      transition: box-shadow 0.3s, transform 0.3s, opacity 0.4s;
-    }
-    .project-card:hover {
-      box-shadow: 0 0 28px rgba(0,161,224,0.3);
-      transform: translateY(-4px);
-    }
-    .project-card.hidden {
-      display: none;
-    }
-    .project-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      gap: 1rem; margin-bottom: 0.6rem; flex-wrap: wrap;
-    }
-    .project-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--text);
-    }
-    .project-date {
-      font-size: 0.8rem; color: var(--sf-blue);
-      font-weight: 600; white-space: nowrap;
-    }
-    .project-domain {
-      display: inline-block;
-      background: rgba(0,161,224,0.12);
-      border: 1px solid var(--sf-blue);
-      color: var(--sf-blue);
-      font-size: 0.76rem; font-weight: 600;
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-      letter-spacing: 0.04em;
-    }
-    .project-company-tag {
-      display: inline-block;
-      background: rgba(27,150,255,0.1);
-      border: 1px solid rgba(27,150,255,0.4);
-      color: var(--sf-accent);
-      font-size: 0.74rem; font-weight: 600;
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-      margin-left: 0.4rem;
-      letter-spacing: 0.04em;
-    }
-    .project-points {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 0.5rem;
-    }
-    .project-points li {
-      font-size: 0.88rem;
-      color: var(--subtext);
-      line-height: 1.6;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .project-points li::before {
-      content: '▸';
-      position: absolute; left: 0;
-      color: var(--sf-blue);
-      font-size: 0.8rem;
-    }
-
-    /* Contact */
+    .projects-filter-bar { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .filter-label { font-size: 0.88rem; color: var(--subtext); font-weight: 500; }
+    .filter-btn { background: var(--card-bg); border: 1.5px solid var(--card-border); color: var(--subtext); border-radius: 999px; padding: 0.3rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: rgba(0,161,224,0.18); color: var(--sf-blue); border-color: var(--sf-blue); box-shadow: 0 0 10px rgba(0,161,224,0.25); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.6rem; }
+    .project-card { background: var(--card-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--sf-blue); border-radius: 14px; padding: 1.6rem 1.8rem; transition: box-shadow 0.3s, transform 0.3s, opacity 0.4s; }
+    .project-card:hover { box-shadow: 0 0 28px rgba(0,161,224,0.3); transform: translateY(-4px); }
+    .project-card.hidden { display: none; }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .project-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+    .project-date { font-size: 0.8rem; color: var(--sf-blue); font-weight: 600; white-space: nowrap; }
+    .project-domain { display: inline-block; background: rgba(0,161,224,0.12); border: 1px solid var(--sf-blue); color: var(--sf-blue); font-size: 0.76rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 999px; margin-bottom: 1rem; letter-spacing: 0.04em; }
+    .project-company-tag { display: inline-block; background: rgba(27,150,255,0.1); border: 1px solid rgba(27,150,255,0.4); color: var(--sf-accent); font-size: 0.74rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 999px; margin-bottom: 1rem; margin-left: 0.4rem; letter-spacing: 0.04em; }
+    .project-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .project-points li { font-size: 0.88rem; color: var(--subtext); line-height: 1.6; padding-left: 1.2rem; position: relative; }
+    .project-points li::before { content: '▸'; position: absolute; left: 0; color: var(--sf-blue); font-size: 0.8rem; }
     #contact { padding: 5rem 0 4rem; }
     .contact-grid { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .contact-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.2rem 1.8rem;
-      display: flex; align-items: center; gap: 0.8rem;
-      text-decoration: none; color: var(--text);
-      font-size: 0.95rem; font-weight: 500;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .contact-item:hover {
-      box-shadow: 0 0 20px rgba(0,161,224,0.3);
-      transform: translateY(-3px);
-    }
+    .contact-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: var(--text); font-size: 0.95rem; font-weight: 500; transition: box-shadow 0.3s, transform 0.3s; }
+    .contact-item:hover { box-shadow: 0 0 20px rgba(0,161,224,0.3); transform: translateY(-3px); }
     .contact-icon { font-size: 1.4rem; }
-
-    /* Footer */
-    footer {
-      position: relative; z-index: 1;
-      text-align: center; padding: 1.5rem;
-      border-top: 1px solid var(--footer-border);
-      color: var(--subtext); font-size: 0.85rem;
-      transition: color 0.4s ease;
-    }
-
-    /* Scroll fade-in */
+    footer { position: relative; z-index: 1; text-align: center; padding: 1.5rem; border-top: 1px solid var(--footer-border); color: var(--subtext); font-size: 0.85rem; transition: color 0.4s ease; }
     .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* Responsive */
     @media (max-width: 640px) {
       .hero-inner { flex-direction: column; align-items: flex-start; }
       .profile-wrap { width: 150px; height: 150px; }
       #profile-photo { width: 150px; height: 150px; }
       .nav-toggle { display: flex; }
-      .nav-links {
-        display: none; flex-direction: column; gap: 0;
-        position: absolute; top: 64px; left: 0; right: 0;
-        background: var(--nav-mobile-bg);
-        border-bottom: 1px solid rgba(0,161,224,0.2);
-        padding: 0.5rem 0;
-      }
+      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 64px; left: 0; right: 0; background: var(--nav-mobile-bg); border-bottom: 1px solid rgba(0,161,224,0.2); padding: 0.5rem 0; }
       .nav-links.open { display: flex; }
       .nav-links li a { display: block; padding: 0.8rem 5%; font-size: 1rem; }
       .theme-toggle { font-size: 0.78rem; padding: 0.3rem 0.7rem; }
@@ -451,8 +126,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
   <nav>
     <a class="nav-brand" href="#hero">DK<span>.</span></a>
     <ul class="nav-links" id="nav-links">
@@ -470,7 +143,6 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <section id="hero">
     <div class="container">
       <div class="hero-inner">
@@ -481,11 +153,7 @@
         <div class="hero-text fade-in">
           <div class="badge-title">☁️ Salesforce Developer</div>
           <h1>Divyanshu <span>Kumar</span></h1>
-          <p class="hero-bio">
-            Salesforce Developer with 1.9+ years of experience in LWC, Apex, Triggers,
-            Flows, and Sales &amp; Service Cloud. Experienced in building scalable
-            applications, integrations, and mobile apps.
-          </p>
+          <p class="hero-bio">Salesforce Developer with 1.9+ years of experience in LWC, Apex, Triggers, Flows, and Sales &amp; Service Cloud. Experienced in building scalable applications, integrations, and mobile apps.</p>
           <div class="hero-buttons">
             <a class="btn btn-primary" href="mailto:rajdivyanshu01@gmail.com">📧 Email Me</a>
             <a class="btn btn-outline" href="https://www.linkedin.com/in/divyanshu-kumar06" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
@@ -495,53 +163,27 @@
     </div>
   </section>
 
-  <!-- Certifications -->
   <section id="certifications">
     <div class="container">
       <h2 class="section-heading fade-in">☁️ Certifications</h2>
       <div class="cert-badges-grid fade-in">
-        <div class="cert-badge-item">
-          <img src="assets/Platform-Admin.png" alt="Salesforce Certified Administrator" />
-          <h4>Salesforce Certified Administrator</h4>
-        </div>
-        <div class="cert-badge-item">
-          <img src="assets/Plat-Dev.png" alt="Salesforce Certified Platform Developer I" />
-          <h4>Salesforce Certified Platform Developer I</h4>
-        </div>
-        <div class="cert-badge-item">
-          <img src="assets/AI-Associate.png" alt="Salesforce Certified AI Associate" />
-          <h4>Salesforce Certified AI Associate</h4>
-        </div>
-        <div class="cert-badge-item">
-          <img src="assets/Agentforce-Specialist.png" alt="Salesforce Agentforce Specialist" />
-          <h4>Salesforce Agentforce Specialist</h4>
-        </div>
+        <div class="cert-badge-item"><img src="assets/Platform-Admin.png" alt="Salesforce Certified Administrator" /><h4>Salesforce Certified Administrator</h4></div>
+        <div class="cert-badge-item"><img src="assets/Plat-Dev.png" alt="Salesforce Certified Platform Developer I" /><h4>Salesforce Certified Platform Developer I</h4></div>
+        <div class="cert-badge-item"><img src="assets/AI-Associate.png" alt="Salesforce Certified AI Associate" /><h4>Salesforce Certified AI Associate</h4></div>
+        <div class="cert-badge-item"><img src="assets/Agentforce-Specialist.png" alt="Salesforce Agentforce Specialist" /><h4>Salesforce Agentforce Specialist</h4></div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
   <section id="skills">
     <div class="container">
       <h2 class="section-heading fade-in">🛠 Skills</h2>
       <div class="skills-grid fade-in">
-        <span class="skill-pill">Apex</span>
-        <span class="skill-pill">LWC</span>
-        <span class="skill-pill">Triggers</span>
-        <span class="skill-pill">SOQL</span>
-        <span class="skill-pill">Sales Cloud</span>
-        <span class="skill-pill">Service Cloud</span>
-        <span class="skill-pill">Experience Cloud</span>
-        <span class="skill-pill">Flows</span>
-        <span class="skill-pill">Validation Rules</span>
-        <span class="skill-pill">Reports &amp; Dashboards</span>
-        <span class="skill-pill">Integration</span>
-        <span class="skill-pill">Mobile Apps</span>
+        <span class="skill-pill">Apex</span><span class="skill-pill">LWC</span><span class="skill-pill">Triggers</span><span class="skill-pill">SOQL</span><span class="skill-pill">Sales Cloud</span><span class="skill-pill">Service Cloud</span><span class="skill-pill">Experience Cloud</span><span class="skill-pill">Flows</span><span class="skill-pill">Validation Rules</span><span class="skill-pill">Reports &amp; Dashboards</span><span class="skill-pill">Integration</span><span class="skill-pill">Mobile Apps</span>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
   <section id="experience">
     <div class="container">
       <h2 class="section-heading fade-in">💼 Experience</h2>
@@ -550,23 +192,18 @@
           <h3>Salesforce Developer</h3>
           <div class="timeline-company">Codleo Consulting</div>
           <div class="timeline-date">Jan 2025 – Present</div>
-          <button class="btn btn-outline btn-sm" onclick="filterAndScrollToProjects('codleo')">
-            🗂 View Codleo Projects
-          </button>
+          <button class="btn btn-outline btn-sm" onclick="filterAndScrollToProjects('codleo')">🗂 View Codleo Projects</button>
         </div>
         <div class="timeline-item fade-in">
           <h3>Junior Associate Developer</h3>
           <div class="timeline-company">Makedian Softech</div>
           <div class="timeline-date">Apr 2024 – Dec 2024</div>
-          <button class="btn btn-outline btn-sm" onclick="filterAndScrollToProjects('makedian')">
-            🗂 View Makedian Projects
-          </button>
+          <button class="btn btn-outline btn-sm" onclick="filterAndScrollToProjects('makedian')">🗂 View Makedian Projects</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <h2 class="section-heading fade-in">🚀 Projects</h2>
@@ -578,7 +215,40 @@
       </div>
       <div class="projects-grid">
 
-        <!-- Codleo Project 3 -->
+        <!-- Project #1 – Makedian -->
+        <div class="project-card fade-in" data-company="makedian">
+          <div class="project-header">
+            <span class="project-title">Project #1</span>
+            <span class="project-date">Apr 2024 – Aug 2024</span>
+          </div>
+          <span class="project-domain">Recruitment / Accounting</span>
+          <span class="project-company-tag">Makedian Softech</span>
+          <ul class="project-points">
+            <li>Designed and developed custom objects, fields, page layouts, and record pages to meet client specifications (Sales Cloud)</li>
+            <li>Implemented validation rules and designed automation solutions using Flow Builder and approval processes to optimize workflow</li>
+            <li>Created custom Lightning Web Components (LWC) to simplify candidate submission and application management for job applications</li>
+            <li>Automated email processing and event directing through auto-launched flows for improved efficiency</li>
+            <li>Developed Apex Triggers for document management and lead conversion, ensuring seamless data processing</li>
+          </ul>
+        </div>
+
+        <!-- Project #2 – Makedian -->
+        <div class="project-card fade-in" data-company="makedian">
+          <div class="project-header">
+            <span class="project-title">Project #2</span>
+            <span class="project-date">Sep 2024 – Dec 2024</span>
+          </div>
+          <span class="project-domain">Hospitality</span>
+          <span class="project-company-tag">Makedian Softech</span>
+          <ul class="project-points">
+            <li>Configured standard and custom objects, fields, page layouts, and validation rules to align with client needs (Sales / Service Cloud)</li>
+            <li>Integrated email services with Outlook to manage email threads seamlessly within Salesforce</li>
+            <li>Developed custom Lightning Web Components (LWC) based on client specifications</li>
+            <li>Created Apex classes, triggers, and test classes to meet functional requirements and enhance system functionality</li>
+          </ul>
+        </div>
+
+        <!-- Project #3 – Codleo -->
         <div class="project-card fade-in" data-company="codleo">
           <div class="project-header">
             <span class="project-title">Project #3</span>
@@ -597,131 +267,48 @@
           </ul>
         </div>
 
-        <!-- Makedian Project 1 -->
-        <div class="project-card fade-in" data-company="makedian">
-          <div class="project-header">
-            <span class="project-title">Project #1</span>
-            <span class="project-date">Apr 2024 – Aug 2024</span>
-          </div>
-          <span class="project-domain">Recruitment / Accounting</span>
-          <span class="project-company-tag">Makedian Softech</span>
-          <ul class="project-points">
-            <li>Designed and developed custom objects, fields, page layouts, and record pages to meet client specifications (Sales Cloud)</li>
-            <li>Implemented validation rules and designed automation solutions using Flow Builder and approval processes to optimize workflow</li>
-            <li>Created custom Lightning Web Components (LWC) to simplify candidate submission and application management for job applications</li>
-            <li>Automated email processing and event directing through auto-launched flows for improved efficiency</li>
-            <li>Developed Apex Triggers for document management and lead conversion, ensuring seamless data processing</li>
-          </ul>
-        </div>
-
-        <!-- Makedian Project 2 -->
-        <div class="project-card fade-in" data-company="makedian">
-          <div class="project-header">
-            <span class="project-title">Project #2</span>
-            <span class="project-date">Sep 2024 – Dec 2024</span>
-          </div>
-          <span class="project-domain">Hospitality</span>
-          <span class="project-company-tag">Makedian Softech</span>
-          <ul class="project-points">
-            <li>Configured standard and custom objects, fields, page layouts, and validation rules to align with client needs (Sales / Service Cloud)</li>
-            <li>Integrated email services with Outlook to manage email threads seamlessly within Salesforce</li>
-            <li>Developed custom Lightning Web Components (LWC) based on client specifications</li>
-            <li>Created Apex classes, triggers, and test classes to meet functional requirements and enhance system functionality</li>
-          </ul>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <h2 class="section-heading fade-in">📬 Contact</h2>
       <div class="contact-grid fade-in">
-        <a class="contact-item" href="mailto:rajdivyanshu01@gmail.com">
-          <span class="contact-icon">📧</span>
-          rajdivyanshu01@gmail.com
-        </a>
-        <span class="contact-item">
-          <span class="contact-icon">📍</span>
-          Noida, India
-        </span>
+        <a class="contact-item" href="mailto:rajdivyanshu01@gmail.com"><span class="contact-icon">📧</span>rajdivyanshu01@gmail.com</a>
+        <span class="contact-item"><span class="contact-icon">📍</span>Noida, India</span>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Divyanshu Kumar. All rights reserved.</p>
-  </footer>
+  <footer><p>© 2025 Divyanshu Kumar. All rights reserved.</p></footer>
 
   <script>
-    // Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      body.classList.add('light-mode');
-      themeBtn.textContent = '🌙';
-    } else {
-      themeBtn.textContent = '☀️';
-    }
+    if (savedTheme === 'light') { body.classList.add('light-mode'); themeBtn.textContent = '🌙'; } else { themeBtn.textContent = '☀️'; }
     themeBtn.addEventListener('click', () => {
       const isLight = body.classList.toggle('light-mode');
       themeBtn.textContent = isLight ? '🌙' : '☀️';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
-
-    // Hamburger menu
     const navToggle = document.getElementById('nav-toggle');
     const navLinks  = document.getElementById('nav-links');
-    navToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', open);
-    });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }));
-
-    // Project Filtering
+    navToggle.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); navToggle.setAttribute('aria-expanded', open); });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { navLinks.classList.remove('open'); navToggle.setAttribute('aria-expanded', 'false'); }));
     function filterProjects(company) {
       const cards = document.querySelectorAll('.project-card');
       const btnAll = document.getElementById('filter-all');
       const btnCodleo = document.getElementById('filter-codleo');
       const btnMakedian = document.getElementById('filter-makedian');
-
-      btnAll.classList.remove('active');
-      btnCodleo.classList.remove('active');
-      btnMakedian.classList.remove('active');
-
-      if (company === 'all') {
-        btnAll.classList.add('active');
-        cards.forEach(c => c.classList.remove('hidden'));
-      } else if (company === 'codleo') {
-        btnCodleo.classList.add('active');
-        cards.forEach(c => {
-          c.classList.toggle('hidden', c.dataset.company !== 'codleo');
-        });
-      } else {
-        btnMakedian.classList.add('active');
-        cards.forEach(c => {
-          c.classList.toggle('hidden', c.dataset.company !== company);
-        });
-      }
+      btnAll.classList.remove('active'); btnCodleo.classList.remove('active'); btnMakedian.classList.remove('active');
+      if (company === 'all') { btnAll.classList.add('active'); cards.forEach(c => c.classList.remove('hidden')); }
+      else if (company === 'codleo') { btnCodleo.classList.add('active'); cards.forEach(c => { c.classList.toggle('hidden', c.dataset.company !== 'codleo'); }); }
+      else { btnMakedian.classList.add('active'); cards.forEach(c => { c.classList.toggle('hidden', c.dataset.company !== company); }); }
     }
-
-    function filterAndScrollToProjects(company) {
-      filterProjects(company);
-      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Intersection Observer for scroll fade-in
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
+    function filterAndScrollToProjects(company) { filterProjects(company); document.getElementById('projects').scrollIntoView({ behavior: 'smooth' }); }
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
