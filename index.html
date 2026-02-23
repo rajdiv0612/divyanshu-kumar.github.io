@@ -97,38 +97,34 @@
     /* .btn-verify { background: rgba(0,161,224,0.08); color: #22c55e; border: 1.5px solid #22c55e !important; }
     .btn-verify:hover { background: rgba(34,197,94,0.12); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.3); } */
 
-    .btn-verify {
-    background: rgba(0,161,224,0.08);
-    color: #22c55e;
-    border: 1.5px solid #22c55e !important;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
+   .btn-verify {
+  background: rgba(0,161,224,0.08);
+  color: #22c55e;
+  border: 1.5px solid #22c55e !important;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
 
-/* Checkbox icon */
-.btn-verify::before {
-    content: "✔";
-    width: 20px;
-    height: 20px;
-    border: 2px solid #22c55e;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    color: #22c55e;
+/* SVG icon */
+.verify-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-/* Hover effect */
+/* Hover effects */
 .btn-verify:hover {
-    background: rgba(34,197,94,0.12);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(34,197,94,0.3);
+  background: rgba(34,197,94,0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34,197,94,0.3);
+}
+
+.btn-verify:hover .verify-icon {
+  transform: scale(1.1);
 }
     .btn-sm { padding: 0.4rem 1rem; font-size: 0.82rem; margin-top: 1rem; }
 
